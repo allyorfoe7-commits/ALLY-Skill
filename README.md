@@ -96,21 +96,31 @@ AI 无法复制：
 
 ## 如何使用
 
-### Codex
+### Codex 一键安装（推荐）
 
-创建个人 Skill 目录，把 `ALLY.skill.md` 复制为 `SKILL.md`：
+使用 Codex 自带的 Skill 安装器：
 
 ```bash
-mkdir -p ~/.codex/skills/ally-skill
-cp ALLY.skill.md ~/.codex/skills/ally-skill/SKILL.md
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo allyorfoe7-commits/ALLY-Skill \
+  --path ally-skill
 ```
 
-然后在任务里调用：
+安装完成后，在下一轮任务中调用：
 
 ```text
 使用 $ally-skill，把下面这段真实经历改成一条 90 秒口播稿。
 保留事实，加入反差、自嘲和商业洞察，不要写成老师。
 ```
+
+### 手动安装
+
+```bash
+git clone --depth 1 https://github.com/allyorfoe7-commits/ALLY-Skill.git
+cp -R ALLY-Skill/ally-skill ~/.codex/skills/ally-skill
+```
+
+Codex 识别的是 `ally-skill/SKILL.md`。仓库根目录的 `ALLY.skill.md` 仅为旧版兼容文件，不要把它当作可直接发现的 Skill 目录。
 
 ### 其他 AI Agent
 
@@ -128,13 +138,15 @@ cp ALLY.skill.md ~/.codex/skills/ally-skill/SKILL.md
 ```text
 ALLY-Skill/
 ├── README.md
-├── ALLY.skill.md
+├── ally-skill/
+│   ├── SKILL.md
+│   └── agents/
+│       └── openai.yaml
+├── ALLY.skill.md（旧版兼容）
 └── LICENSE
 ```
 
-就三个文件。
-
-人格已经够复杂了，项目结构就别再装了。
+现在目录多了两层，不是为了装，是为了让 Codex 真能找到它。
 
 ## 一句话原则
 
