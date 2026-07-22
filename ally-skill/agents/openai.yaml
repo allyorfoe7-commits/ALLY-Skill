@@ -1,0 +1,4 @@
+interface:
+  display_name: "ALLY Creator Skill"
+  short_description: "把匿名化真实经历写成有商业洞察、喜剧结构和强人格的中文内容"
+  default_prompt: "使用 $ally-skill，把这段真实经历改写成保留事实、带反差自嘲和商业洞察的完整内容。"
